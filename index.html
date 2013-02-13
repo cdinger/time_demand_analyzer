@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>asdf</title>
+
+  <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+  <script src="/js/lib/jquery-1.9.1.js"></script>
+  <script src="/bootstrap/js/bootstrap.js"></script>
+  <script src="/js/lib/underscore.js"></script>
+  <script src="/js/lib/backbone.js"></script>
+  <script src="/js/lib/d3.v3.js"></script>
+
+  <script src="/js/models/task.js"></script>
+  <script src="/js/collections/tasks.js"></script>
+  <script src="/js/views/tasks.js"></script>
+
+  <style type="text/css">
+    li {
+      list-style:none;
+      display:block;
+      margin: 10px 10px 10px 0;
+
+    }
+    li span.value, li input {
+      width: 20px;
+    }
+    li input[type=text] {
+      display:none;
+    }
+    li.editing input[type=text] {
+      display:inline
+    }
+    li.editing span {
+      display:none;
+    }
+  </style>
+
+  <script type="text/template" id="task-template">
+    T<sub><%- index %></sub> (p<sub><%- index %></sub>=<input
+    type="text" value="<%- period %>" /><span class="value"><%- period
+      %></span>,
+    e<sub><%- index %></sub>=<%- executionTime %>)
+  </script>
+
+  <script>
+    var TaskView = Backbone.View.extend({
+      tagName: "li",
+      template: _.template( $('#task-template').html() ),
+      initialize: function() {
+        this.listenTo(this.model, "change", this.render);
+        this.model.bind('change', this.render, this);
+      },
+      events: {
+        'dblclick': 'edit',
+        'blur input': 'close'
+      },
+      render: function() {
+        this.$el.html( this.template( this.model.toJSON() ) );
+        this.input = this.$('input');
+        return this;
+      },
+      edit: function() {
+        this.$el.addClass("editing");
+        this.input.focus();
+      },
+      close: function() {
+        var value = this.input.val();
+        if (!value) {
+          this.clear();
+        } else {
+          // this.model.save({period: value});
+          this.model.set({period: value});
+          this.$el.removeClass("editing");
+        }
+      }
+    });
+
+    var AppView = Backbone.View.extend({
+      el: $('#app'),
+      initialize: function() {
+        this.listenTo(Tasks, 'add', this.addOne);
+      },
+      addOne: function(task) {
+        task.set({index: Tasks.indexOf(task) + 1});
+        var view = new TaskView({model: task});
+        $("#task-list").append(view.render().el);
+      }
+    });
+
+    var Tasks = new TaskSet();
+    var App = new AppView();
+
+    $(function() {
+      Tasks.add(new Task({period: 25, executionTime: 8}));
+      Tasks.add(new Task({period: 50, executionTime: 13}));
+      Tasks.add(new Task({period: 100, executionTime: 40}));
+    });
+
+  </script>
+</head>
+<body>
+  <div class="containter">
+    <h1>Time-demand analyzer</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div id="app">
+      <h2>Tasks</h2>
+      <ul id="task-list">
+      </ul>
+    </div>
+  </div>
+  <script src="js/chart.js"></script>
+</body>
+</html>
