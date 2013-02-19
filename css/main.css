@@ -1,0 +1,49 @@
+body {
+  width:800px;
+  margin:10px auto;
+}
+li {
+  list-style:none;
+  display:block;
+  margin: 10px 10px 10px 0;
+}
+li span.value, li input {
+  width: 20px;
+}
+li input.span4[type=text] {
+  display:none;
+}
+li.editing input[type=text] {
+  display:inline;
+}
+li.editing span {
+  display:none;
+}
+      /* tell the SVG path to be a thin blue line without any area fill */
+  path {
+    stroke: #000;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  path.service {
+    stroke: #ccc;
+  }
+  
+  .axis {
+    shape-rendering: crispEdges;
+  }
+
+  .x.axis line, .y.axis line {
+    stroke: #ccc;
+  }
+
+  .x.axis .minor, .y.axis .minor{
+    stroke-opacity: .5;
+  }
+
+  .x.axis path, .y.axis path {
+    /* display: none; */
+    stroke :#ccc;
+    stroke-width: 1;
+  }
