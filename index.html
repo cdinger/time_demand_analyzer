@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>asdf</title>
+	<title>Time-demand analysis</title>
   <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
   <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="/css/main.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body>
   <div class="containter">
     <div class="page-header">
-      <h1>Time-demand analyzer</h1>
+      <h1>Time-demand analysis</h1>
     </div>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -22,19 +22,43 @@
     culpa qui officia deserunt mollit anim id est laborum.</p>
     <div id="app">
       <div class="row-fluid">
-        <div class="span6">
-          <h2>Tasks</h2>
-          <p>Automatically prioritized using deadline monotonic assignment
-          (DMA).</p>
-          <form>
-            <label>New task</label>
-            <input type="text" id="new-task" />
+        <div class="span4">
+          <!--<h3>Assignment method</h3>-->
+          <!--<form class="form-vertical">-->
+            <!--<div class="control-group">-->
+              <!--<label class="radio">-->
+                <!--<input type="radio" name="assigment_method" value="DMA" checked /> Deadline monotonic assignment (DMA)-->
+              <!--</label>-->
+              <!--<label class="radio">-->
+                <!--<input type="radio" name="assigment_method" value="RMA" /> Rate monotonic assignment (DMA)-->
+              <!--</label>-->
+            <!--</div>-->
+          <!--</form>-->
+          <h3>Tasks</h3>
+          <form class="form-inline">
+            <div class="control-group">
+              <input type="text" id="new-task" class="span6" placeholder="p, e, [D, &theta;]" />
+              <button class="btn">Add task</button>
+            </div>
           </form>
+          <p>Double-click a task to edit it.</p>
           <ul id="task-list">
           </ul>
+          <h4>Example workloads</h4>
+          <p><a href="/?t=[[25,8],[50,13],[100,40]]">Workload 1</a></p>
+          <p><a href="/?t=[[25,8,9],[50,13],[100,40,75]]">Workload 2</a></p>
+          <p><a href="/?t=[[10,1],[20,5],[30,12],[50,15]]">Workload 3</a></p>
+          <p><a href="/?t=[[25,8,9],[50,13,50,2],[100,40,75,2]]">Workload 4</a></p>
+          <p><a href="/?t=[[25,8,9],[50,13],[100,40,75]]">Workload 5</a></p>
+
+          <h4>Other examples</h4>
+          <p><a href="/?t=[[3,1],[5,1.5],[7,1.25],[8,0.5]]">Slide example 1</a></p>
+          <p><a href="/?t=[[5,3],[10,3],[15,1]]">Task set 2</a></p>
+          <p><a href="/?t=[[3,1],[6,3]]">Task set 3</a></p>
+          <p><a href="/?t=[[4,1],[5,1.5],[9,2]]">Book: figure 6-20</a></p>
         </div>
-        <div class="span6">
-          <h2>Time-demand curve</h2>
+        <div class="span8">
+          <h3>Time-demand curve</h3>
           <div id="graph"></div>
         </div>
       </div>
@@ -42,14 +66,22 @@
   </div>
 
   <script type="text/template" id="task-template">
-    T<sub><%- index %></sub> = (
+    &tau;<sub><%- index %></sub> = (
     <input type="text" value="<%- string %>" class="span4"></input>
     <span>
     p<sub><%- index %></sub>= <span class="value"><%- period %></span>,
-    e<sub><%- index %></sub>=<span class="value"><%- executionTime %></span>,
-    d<sub><%- index %></sub>=<span class="value"><%- deadline %></span>
+    e<sub><%- index %></sub>=<span class="value"><%- executionTime %></span><% if (deadline) { %>,
+    D<sub><%- index %></sub>=<span class="value"><%- deadline %></span>
+    <% } %><% if (nonpreemptibleTime) { %>,
+    &theta;<sub><%- index %></sub>=<span class="value"><%- nonpreemptibleTime %></span>
+    <% } %>
+
     </span>
     )
+    <a href=""><i class="icon-trash"/></a>
+  </script>
+  <script type="text/template" id="task-line-label">
+    <text x="<%- x %>" y="<%- y %>" class="line-label">w___<tspan style="baseline-shift:sub"><%- i %></tspan>(t)</text>
   </script>
 
   <script src="/js/lib/jquery-1.9.1.js"></script>

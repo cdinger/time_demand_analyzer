@@ -1,11 +1,17 @@
 body {
-  width:800px;
+  width:1080px;
   margin:10px auto;
 }
 li {
   list-style:none;
   display:block;
   margin: 10px 10px 10px 0;
+}
+li a {
+  display:none;
+}
+li:hover a {
+  display:inline;
 }
 li span.value, li input {
   width: 20px;
@@ -27,7 +33,7 @@ li.editing span {
   }
 
   path.service {
-    stroke: #ccc;
+    stroke: #000;
   }
   
   .axis {
@@ -35,7 +41,7 @@ li.editing span {
   }
 
   .x.axis line, .y.axis line {
-    stroke: #ccc;
+    stroke: #000;
   }
 
   .x.axis .minor, .y.axis .minor{
@@ -44,6 +50,6 @@ li.editing span {
 
   .x.axis path, .y.axis path {
     /* display: none; */
-    stroke :#ccc;
+    stroke :#000;
     stroke-width: 1;
   }

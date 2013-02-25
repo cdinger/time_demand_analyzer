@@ -6,7 +6,7 @@ var App = App || {};
       period: 0,
       executionTime: 0,
       deadline: undefined,
-      nonpreemptibleTime: undefined
+      blockingTime: undefined
     },
 
     initialize: function() {
@@ -43,7 +43,7 @@ var App = App || {};
       this.set('period', this.parse(arr[0]));
       this.set('executionTime', this.parse(arr[1]));
       this.set('deadline', this.parse(arr[2]));
-      this.set('nonpreemptibleTime', this.parse(arr[3]));
+      this.set('blockingTime', this.parse(arr[3]));
       this.change();
     },
 
