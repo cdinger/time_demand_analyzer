@@ -13,13 +13,6 @@
     <div class="page-header">
       <h1>Time-demand analysis</h1>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Duis aute irure dolor in
-    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-    culpa qui officia deserunt mollit anim id est laborum.</p>
     <div id="app">
       <div class="row-fluid">
         <div class="span4">
@@ -35,6 +28,7 @@
             <!--</div>-->
           <!--</form>-->
           <h3>Tasks</h3>
+          <!--
           <form class="form-inline">
             <div class="control-group">
               <input type="text" id="new-task" class="span6" placeholder="p, e, [D, &theta;]" />
@@ -42,6 +36,7 @@
             </div>
           </form>
           <p>Double-click a task to edit it.</p>
+          -->
           <ul id="task-list">
           </ul>
           <h4>Example workloads</h4>
@@ -49,13 +44,15 @@
           <p><a href="/?t=[[25,8,9],[50,13],[100,40,75]]">Workload 2</a></p>
           <p><a href="/?t=[[10,1],[20,5],[30,12],[50,15]]">Workload 3</a></p>
           <p><a href="/?t=[[25,8,9],[50,13,50,2],[100,40,75,2]]">Workload 4</a></p>
-          <p><a href="/?t=[[25,8,9],[50,13],[100,40,75]]">Workload 5</a></p>
+          <p><a href="/?t=[[25,8,9],[50,13,50,2],[100,40,75,2]]">Workload 5</a></p>
 
           <h4>Other examples</h4>
-          <p><a href="/?t=[[3,1],[5,1.5],[7,1.25],[8,0.5]]">Slide example 1</a></p>
-          <p><a href="/?t=[[5,3],[10,3],[15,1]]">Task set 2</a></p>
-          <p><a href="/?t=[[3,1],[6,3]]">Task set 3</a></p>
+          <p><a href="/?t=[[3,1],[6,3]]">Homework 2</a></p>
           <p><a href="/?t=[[4,1],[5,1.5],[9,2]]">Book: figure 6-20</a></p>
+          <!--
+          <p><a href="/?t=[[5,3],[10,3],[15,1]]">Task set 2</a></p>
+          <p><a href="/?t=[[3,1],[5,1.5],[7,1.25],[8,0.5]]">Slide example 1</a></p>
+          -->
         </div>
         <div class="span8">
           <h3>Time-demand curve</h3>
@@ -78,7 +75,7 @@
 
     </span>
     )
-    <a href=""><i class="icon-trash"/></a>
+    <!--<a href=""><i class="icon-trash"/></a>-->
   </script>
   <script type="text/template" id="task-line-label">
     <text x="<%- x %>" y="<%- y %>" class="line-label">w___<tspan style="baseline-shift:sub"><%- i %></tspan>(t)</text>

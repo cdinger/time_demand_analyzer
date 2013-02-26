@@ -48,20 +48,20 @@ var App = App || {};
     },
 
     // Calculates demand for the given task at index i at time t
-    demand: function(tasks, t, w) {
-      var taskIndex = tasks.indexOf(this);
-      w = w || 0;
-      // var w = this.get('executionTime');
-      if (taskIndex == 0) {
-        return this.get('executionTime');
-      }
-      else {
-        while (taskIndex >= 0) {
-          // w += Math.ceil(t/this.models[i-1].get('period')) * this.models[i-1].get('executionTime');
-          return w + tasks[taskIndex - 1].demand(tasks, t, w);
-        }
-      }
-    }
+    //demand: function(tasks, t, w) {
+      //var taskIndex = tasks.indexOf(this);
+      //w = w || 0;
+      //// var w = this.get('executionTime');
+      //if (taskIndex == 0) {
+        //return this.get('executionTime');
+      //}
+      //else {
+        //while (taskIndex >= 0) {
+          //// w += Math.ceil(t/this.models[i-1].get('period')) * this.models[i-1].get('executionTime');
+          //return w + tasks[taskIndex - 1].demand(tasks, t, w);
+        //}
+      //}
+    //}
 
   });
 

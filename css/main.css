@@ -2,6 +2,9 @@ body {
   width:1080px;
   margin:10px auto;
 }
+ul#task-list {
+  height:150px;
+}
 li {
   list-style:none;
   display:block;
@@ -52,4 +55,7 @@ li.editing span {
     /* display: none; */
     stroke :#000;
     stroke-width: 1;
+  }
+
+  text.line-label {
   }
