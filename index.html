@@ -15,7 +15,7 @@
     </div>
     <div id="app">
       <div class="row-fluid">
-        <div class="span4">
+        <div class="span3">
           <!--<h3>Assignment method</h3>-->
           <!--<form class="form-vertical">-->
             <!--<div class="control-group">-->
@@ -40,21 +40,25 @@
           <ul id="task-list">
           </ul>
           <h4>Example workloads</h4>
-          <p><a href="/?t=[[25,8],[50,13],[100,40]]">Workload 1</a></p>
-          <p><a href="/?t=[[25,8,9],[50,13],[100,40,75]]">Workload 2</a></p>
-          <p><a href="/?t=[[10,1],[20,5],[30,12],[50,15]]">Workload 3</a></p>
-          <p><a href="/?t=[[25,8,9],[50,13,50,2],[100,40,75,2]]">Workload 4</a></p>
-          <p><a href="/?t=[[25,8,9],[50,13,50,2],[100,40,75,2]]">Workload 5</a></p>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/?t=[[25,8],[50,13],[100,40]]&workload=1" data-workload="1">Workload 1</a></li>
+            <li><a href="/?t=[[25,8,9],[50,13],[100,40,75]]&workload=2" data-workload="2">Workload 2</a></li>
+            <li><a href="/?t=[[10,1],[20,5],[30,12],[50,15]]&workload=3" data-workload="3">Workload 3</a></li>
+            <li><a href="/?t=[[25,8,9],[50,13,50,2],[100,40,75,2]]&workload=4" data-workload="4">Workload 4</a></li>
+            <li><a href="/?t=[[25,8,9],[50,13,50,2],[100,40,75,2]]&workload=5" data-workload="5">Workload 5</a></li>
+          </ul>
 
           <h4>Other examples</h4>
-          <p><a href="/?t=[[3,1],[6,3]]">Homework 2</a></p>
-          <p><a href="/?t=[[4,1],[5,1.5],[9,2]]">Book: figure 6-20</a></p>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/?t=[[3,1],[6,3]]&workload=6" data-workload="6">Homework 2</a></li>
+            <li><a href="/?t=[[4,1],[5,1.5],[9,2]]&workload=7" data-workload="7">Book: figure 6-20</a></li>
+          </ul>
           <!--
           <p><a href="/?t=[[5,3],[10,3],[15,1]]">Task set 2</a></p>
           <p><a href="/?t=[[3,1],[5,1.5],[7,1.25],[8,0.5]]">Slide example 1</a></p>
           -->
         </div>
-        <div class="span8">
+        <div class="span9">
           <h3>Time-demand curve</h3>
           <div id="graph"></div>
         </div>
@@ -87,7 +91,6 @@
   <script src="/js/lib/backbone.js"></script>
   <script src="/js/lib/d3.v3.js"></script>
   <script src="/js/models/task.js"></script>
-  <script src="/js/models/analysis.js"></script>
   <script src="/js/collections/tasks.js"></script>
   <script src="/js/views/tasks.js"></script>
   <script src="/js/views/analysis.js"></script>

@@ -22,6 +22,7 @@ var App = App || {};
       this.set('string', values.join(', '));
     },
 
+    // Parses one string task element into an int or float.
     parse: function(str) {
       ret = undefined;
 
@@ -38,6 +39,8 @@ var App = App || {};
       return ret;
     },
 
+    // Parses a string from the edit/add task form; A comma-separated list of
+    // task elements: period, execute time, [relative deadline, non-preemptable time]
     parseString: function(str) {
       var arr = str.split(',');
       this.set('period', this.parse(arr[0]));
@@ -45,23 +48,7 @@ var App = App || {};
       this.set('deadline', this.parse(arr[2]));
       this.set('nonpreemptibleTime', this.parse(arr[3]));
       this.change();
-    },
-
-    // Calculates demand for the given task at index i at time t
-    //demand: function(tasks, t, w) {
-      //var taskIndex = tasks.indexOf(this);
-      //w = w || 0;
-      //// var w = this.get('executionTime');
-      //if (taskIndex == 0) {
-        //return this.get('executionTime');
-      //}
-      //else {
-        //while (taskIndex >= 0) {
-          //// w += Math.ceil(t/this.models[i-1].get('period')) * this.models[i-1].get('executionTime');
-          //return w + tasks[taskIndex - 1].demand(tasks, t, w);
-        //}
-      //}
-    //}
+    }
 
   });
 

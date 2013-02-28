@@ -4,28 +4,29 @@ body {
 }
 ul#task-list {
   height:150px;
+  margin:0;
 }
-li {
+ul#task-list li {
   list-style:none;
   display:block;
   margin: 10px 10px 10px 0;
 }
-li a {
+ul#task-list li a {
   display:none;
 }
-li:hover a {
+ul#task-list li:hover a {
   display:inline;
 }
-li span.value, li input {
+ul#task-list li span.value, ul#task-list li input {
   width: 20px;
 }
-li input.span4[type=text] {
+ul#task-list li input.span4[type=text] {
   display:none;
 }
-li.editing input[type=text] {
+ul#task-list li.editing input[type=text] {
   display:inline;
 }
-li.editing span {
+ul#task-list li.editing span {
   display:none;
 }
       /* tell the SVG path to be a thin blue line without any area fill */

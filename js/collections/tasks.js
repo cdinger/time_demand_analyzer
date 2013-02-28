@@ -5,11 +5,11 @@ var App = App || {};
     model: App.Task,
 
     comparator: function(task) {
-      // deadline monotonic
+      // sort into a deadline monotonic order
       return task.get('deadline') || task.get('period');
     },
 
-    // Caclulates blocking time for task at index i
+    // Caclulates worst-case blocking time for task at index i
     blockingTime: function(i) {
       var b = 0;
       for (i-1; i < this.models.length; i++) {
